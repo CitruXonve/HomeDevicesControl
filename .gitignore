@@ -44,7 +44,7 @@ buck-out
 .gradle
 local.properties
 *.iml
-/android/
+android/
 
 # Node
 node_modules
@@ -71,7 +71,7 @@ package-lock.json
 RNTester/build
 
 /__tests__/
-/ios/
+ios/
 
 # Logs
 logs
