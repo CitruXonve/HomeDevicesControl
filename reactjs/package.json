@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
+    "react-cross-form": "^1.2.12",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
     "typescript": "^3.4.1"
