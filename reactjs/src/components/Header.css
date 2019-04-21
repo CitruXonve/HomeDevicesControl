@@ -1,0 +1,17 @@
+/* .navbar-nav {
+    width: 100%;
+    text-align: center;
+
+    > li {
+      float: none;
+      display: inline-block;
+    }
+  } */
+.navbar-dark {
+    /* background-color: #606060; */
+    background: -webkit-linear-gradient(-86deg, #e1ea56 5%, #5ad06e 53%, #21c5ac 91%);
+}
+  
+@media screen and (max-width: 768px) {
+    body { padding-top: 60px; }
+}

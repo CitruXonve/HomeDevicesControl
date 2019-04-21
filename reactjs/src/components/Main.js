@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 // import Menu from './Menu';
 import Header from './Header';
-// import Footer from './Footer';
+import Footer from './Footer';
 import Home from './Home';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ class Main extends Component {
             <Route exact path='/contactus' component={Contact} />} /> */}
             <Redirect to="/home" />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
