@@ -9,9 +9,14 @@
   } */
 .navbar-dark {
     /* background-color: #606060; */
-    background: -webkit-linear-gradient(-86deg, #e1ea56 5%, #5ad06e 53%, #21c5ac 91%);
+    background: -webkit-linear-gradient(-106deg, #e1ea56 15%, #32b148 73%, #21c5ac 91%);
 }
   
-@media screen and (max-width: 768px) {
-    body { padding-top: 60px; }
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
 }
+
+body { padding-top: 50px; }
+/* @media screen and (max-width: 768px) {
+    body { padding-top: 50px; }
+} */

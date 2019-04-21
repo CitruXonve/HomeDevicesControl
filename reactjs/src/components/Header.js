@@ -75,9 +75,9 @@ class Header extends Component {
       <Jumbotron className="d-none d-sm-none d-md-block">
            <div className="container">
                <div className="row row-header">
-                   <div className="col-12 col-sm-6">
-                       <h1>Ristorante con Fusion</h1>
-                       <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
+                   <div className="col-12">
+                       <h1>Get inspired && Start up!</h1>
+                       <p>A glance at all your Smart Devices</p>
                    </div>
                </div>
            </div>
