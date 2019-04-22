@@ -22,10 +22,10 @@ class Header extends Component {
   render() {
     return(
     <React.Fragment>
-      <Navbar dark expand="md" fixed="top">
+      <Navbar dark className="web-header d-none d-md-block" expand="md" fixed="top">
           <div className="container">
               <NavbarToggler onClick={this.toggleNav} />
-              <NavbarBrand className="mr-auto" href="/">Smart Devices</NavbarBrand>
+              <NavbarBrand className="mr-auto" href="#">Smart Devices</NavbarBrand>
               <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
                     <NavItem>
@@ -38,7 +38,7 @@ class Header extends Component {
                     <NavItem>
                       <NavLink className="nav-link" to="#">
                         <span className="fa fa-cubes menu-icon"></span>
-                        <span>Categories</span>
+                        <span>Devices</span>
                         <span className="badge badge-pill badge-warning notify-badge">6</span>
                       </NavLink>
                     </NavItem>
@@ -49,29 +49,39 @@ class Header extends Component {
                         <span className="badge badge-pill badge-primary notify-badge">8</span>
                       </NavLink>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLink className="nav-link" to='/contactus'>
                           <span className="fa fa-address-card fa-lg"></span>
                           Contact Us
                         </NavLink>
-                    </NavItem>
+                    </NavItem> */}
                   </Nav>
               </Collapse>
           </div>
       </Navbar>
-      {/* <Navbar dark expand="md" fixed="top">
+      <Navbar light className="mobile-header d-block d-md-none" expand="xs" fixed="top">
           <div className="container">
-              <NavbarToggler onClick={this.toggleNav} />
-              <NavbarBrand className="mr-auto" href="/">Smart Devices</NavbarBrand>
-              <Collapse isOpen={this.state.isNavOpen} navbar>
-                  <Nav navbar>
-                  <NavItem>
-                      <NavLink className="nav-link" to='#'><span></span>About</NavLink>
-                  </NavItem>
-                  </Nav>
+              <Collapse navbar>
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink className="nav-link" to="#">
+                            <span className="fa fa-user-circle-o mobile-header-icon"></span>
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+                <NavbarBrand className="mr-auto" href="#">Inspiration</NavbarBrand>
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink className="nav-link" to="#">
+                            <span className="fa fa-plus mobile-header-icon"></span>
+                        </NavLink>
+                    </NavItem>
+                </Nav>
               </Collapse>
-          </div>
-      </Navbar> */}
+            </div>
+
+      </Navbar>
+    
       <Jumbotron className="d-none d-sm-none d-md-block">
            <div className="container">
                <div className="row row-header">

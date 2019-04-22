@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Row, Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import './Footer.css';
+
 
 const Footer = () => {
 
@@ -20,8 +20,9 @@ const Footer = () => {
                 <li id="contact"><a href="#"><div>Contact</div></a></li>
                 </ul>
             </Navbar> */}
-            <Navbar light expand="xs" className="mobile-nav" fixed="bottom">
+            <Navbar light expand="xs" className="mobile-nav d-block d-md-none" fixed="bottom">
                 <div className="container">
+                    <Collapse navbar>
                             <Nav navbar className="mobile-nav">
                                 <NavItem>
                                     <NavLink className="nav-link" to="#">
@@ -34,20 +35,20 @@ const Footer = () => {
                                     <NavLink className="nav-link" to="#">
                                         <span className="badge badge-pill badge-warning notify-badge">6</span>
                                         <span className="fa fa-cubes mobile-nav-icon"></span>
-                                        <span className="mobile-nav-label">Categories</span>
+                                        <span className="mobile-nav-label">Devices</span>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="#">
                                         <span className="badge badge-pill badge-primary notify-badge">8</span>
-                                        <i className="fa fa-cogs mobile-nav-icon" aria-hidden="true"></i>
+                                        <span className="fa fa-cogs mobile-nav-icon"></span>
                                         <span className="mobile-nav-label">Settings</span>
                                     </NavLink>
                                 </NavItem>
-                                <NavItem class="hidden-xs">
+                                {/* <NavItem class="hidden-xs">
                                     <NavLink className="nav-link" to="#">
                                         <span className="mobile-nav-icon fa fa-bell-o"></span>
-                                        <span className="mobile-nav-label">Reservations</span>
+                                        <span className="mobile-nav-label">Notifications</span>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem class="visible-xs">
@@ -55,8 +56,9 @@ const Footer = () => {
                                         <span className="mobile-nav-icon fa fa-bars"></span>
                                         <span className="mobile-nav-label">More</span>
                                     </NavLink>
-                                </NavItem>
+                                </NavItem> */}
                             </Nav>
+                    </Collapse>
                     
                     
                 </div>
