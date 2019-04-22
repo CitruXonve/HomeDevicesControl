@@ -38,25 +38,26 @@ class Home extends React.Component {
         var light_list = null;
         var light_attr_list = null;
 
-        if (this.state.config && this.state.config.device) {
-            // console.log(typeof(this.state.config.device)+'\n'+Array.isArray(this.state.config.device)+'\n'+JSON.parse(JSON.stringify(this.state.config.device)))
-            // return null;
-            device_list = this.state.config.device;
-            light_list = (() => 
-                device_list = device_list.filter((device) => device.type === 'light'))()
+        // if (this.state.config && this.state.config.device) {
+        //     // console.log(typeof(this.state.config.device)+'\n'+Array.isArray(this.state.config.device)+'\n'+JSON.parse(JSON.stringify(this.state.config.device)))
+        //     // return null;
+        //     device_list = this.state.config.device;
+        //     light_list = (() => 
+        //         device_list = device_list.filter((device) => device.type === 'light'))()
             
-            if (light_list.length>0){
-                light_attr_list = light_list[0].attribute
-            }
-        }
-        console.log(this.state.config, light_list, light_attr_list)
+        //     if (light_list.length>0){
+        //         light_attr_list = light_list[0].attribute
+        //     }
+        // }
+        // console.log(this.state.config, light_list, light_attr_list)
 
         const light_panel = () => {
-            const light_attr_th = light_attr_list.map(attr => {
-                return(
-                    <th>{attr}</th>
-                )
-            })
+            // const light_attr_th = light_attr_list.map(attr => {
+            //     return(
+            //         <th>{attr}</th>
+            //     )
+            // })
+            const light_attr_th = null;
             return(
                 <Col md="6" className="col-content">
                     {light_list && light_attr_list ? 
