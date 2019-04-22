@@ -15,6 +15,14 @@ class Home extends React.Component {
         this.state = {
             activeTab: '1'
         };
+
+        if (props.config) {
+            // this.setState({'config': props.config});
+            //+'\n'+JSON.stringify({'prop':props.config}));
+            this.state.config = props.config;
+        }
+        console.log('HomeState: ' + JSON.stringify(this.state));
+
     }
 
     toggle(tab) {
@@ -26,35 +34,85 @@ class Home extends React.Component {
     }
 
     render() {
+        var device_list = null;
+        var light_list = null;
+        var light_attr_list = null;
+
+        // if (this.state.config && this.state.config.device) {
+        //     // console.log(typeof(this.state.config.device)+'\n'+Array.isArray(this.state.config.device)+'\n'+JSON.parse(JSON.stringify(this.state.config.device)))
+        //     // return null;
+        //     device_list = this.state.config.device;
+        //     light_list = (() => 
+        //         device_list = device_list.filter((device) => device.type === 'light'))()
+            
+        //     if (light_list.length>0){
+        //         light_attr_list = light_list[0].attribute
+        //     }
+        // }
+        // console.log(this.state.config, light_list, light_attr_list)
+
+        const light_panel = () => {
+            // const light_attr_th = light_attr_list.map(attr => {
+            //     return(
+            //         <th>{attr}</th>
+            //     )
+            // })
+            const light_attr_th = null;
+            return(
+                <Col md="6" className="col-content">
+                    {light_list && light_attr_list ? 
+                        <Card body>
+                            <CardTitle>
+                                <span className="fa fa-lightbulb-o fa-2x device-type-icon"></span>
+                                My light bulb
+                            </CardTitle>
+                            <CardText></CardText>
+                            <Table light>
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        {light_attr_th}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>off</td>
+                                        <td>1513</td>
+                                        <td>3</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                            <Button size="sm" className="btn-info">Details</Button>
+                        </Card>
+                        : <div></div>}
+                </Col>
+            )
+        }
+
         return (
             <React.Fragment>
                 <Container>
                     <Row className="row-content">
-                        <Col md="6" className="col-content">
+                        {light_panel()}
+                        {/* <Col md="6" className="col-content">
                             <Card body>
                                 <CardTitle><span className="fa fa-lightbulb-o fa-2x device-type-icon"></span> My light bulb</CardTitle>
-                                <CardText>[No description]</CardText>
+                                <CardText></CardText>
                                 <Table light>
                                     <thead>
                                         <tr>
                                             <th>Time</th>
-                                            <th>Status</th>
-                                            <th>Lightness Level</th>
-                                            <th>Color Temp</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>on</td>
-                                            <td>915</td>
-                                            <td>1</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">2</th>
-                                            <td>on</td>
-                                            <td>1403</td>
-                                            <td>2</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">3</th>
@@ -66,7 +124,7 @@ class Home extends React.Component {
                                 </Table>
                                 <Button size="sm" className="btn-info">Details</Button>
                             </Card>
-                        </Col>
+                        </Col> */}
                         <Col md="6" className="col-content">
                             <Card body>
                                 <CardTitle><span className="fa fa-video-camera fa-2x device-type-icon"></span> Unknown Security Camera</CardTitle>
