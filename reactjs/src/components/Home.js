@@ -21,7 +21,7 @@ class Home extends React.Component {
             //+'\n'+JSON.stringify({'prop':props.config}));
             this.state.config = props.config;
         }
-        console.log('HomeState: ' + JSON.stringify(this.state));
+        console.log('HomeState: ' + JSON.stringify(this.state).slice(0,30));
 
     }
 
@@ -34,57 +34,51 @@ class Home extends React.Component {
     }
 
     render() {
-        var device_list = null;
-        var light_list = null;
-        var light_attr_list = null;
-
-        // if (this.state.config && this.state.config.device) {
-        //     // console.log(typeof(this.state.config.device)+'\n'+Array.isArray(this.state.config.device)+'\n'+JSON.parse(JSON.stringify(this.state.config.device)))
-        //     // return null;
-        //     device_list = this.state.config.device;
-        //     light_list = (() => 
-        //         device_list = device_list.filter((device) => device.type === 'light'))()
+        const panel_generator = (type_keyword, display_log_limit_cnt) => {
+            const device_list = this.state.config ? this.state.config.device : null;
+            const spec_device_list = Array.isArray(device_list) ?
+                    device_list.filter((device) => device.type === type_keyword) : null;
+            const spec_device = Array.isArray(spec_device_list) && spec_device_list.length>0 ? spec_device_list[0] : null;
+            const spec_device_attr_list = Array.isArray(spec_device_list) && spec_device_list.length>0 ? spec_device_list[0].attribute : null;
             
-        //     if (light_list.length>0){
-        //         light_attr_list = light_list[0].attribute
-        //     }
-        // }
-        // console.log(this.state.config, light_list, light_attr_list)
+            const spec_device_attr_th = Array.isArray(spec_device_attr_list) ?
+            spec_device_attr_list.map(attr => {
+                return(
+                    <th>{attr}</th>
+                    )
+                }) : null;
 
-        const light_panel = () => {
-            // const light_attr_th = light_attr_list.map(attr => {
-            //     return(
-            //         <th>{attr}</th>
-            //     )
-            // })
-            const light_attr_th = null;
+            const spec_device_attr_tr = Array.isArray(spec_device_list) && spec_device_list.length>0 && Array.isArray(spec_device_list[0].log) ? 
+                spec_device_list[0].log.map(record => {
+                    var row=[]
+                    spec_device_attr_list.forEach(attr => row.push(<td>{record[attr]}</td>))
+                    return(<tr>{row}</tr>);
+                })
+                : null;
+                
+            // console.log(spec_device)
+            const fa_label = spec_device ? spec_device.fa_label : null;
+            // console.log(<span className={"fa "+fa_label+" fa-2x device-type-icon"}></span>)
+            // console.log('spec_device_panel_view',spec_device_attr_tr)
+            
             return(
                 <Col md="6" className="col-content">
-                    {light_list && light_attr_list ? 
+                    {spec_device_list && spec_device_attr_list ? 
                         <Card body>
                             <CardTitle>
-                                <span className="fa fa-lightbulb-o fa-2x device-type-icon"></span>
-                                My light bulb
+                                {fa_label ? <span className={"fa "+fa_label+" fa-2x device-type-icon"}></span> : null}
+                                {/* <span className="fa fa-lightbulb-o fa-2x device-type-icon"></span> */}
+                                {spec_device.title ? spec_device.title : "No Name"}
                             </CardTitle>
-                            <CardText></CardText>
+                            <CardText>{spec_device.description ? spec_device.description : "No Description"}</CardText>
                             <Table light>
                                 <thead>
                                     <tr>
-                                        <th>Time</th>
-                                        {light_attr_th}
+                                        {spec_device_attr_th}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                    </tr>
-                                    <tr>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>off</td>
-                                        <td>1513</td>
-                                        <td>3</td>
-                                    </tr>
+                                    {spec_device_attr_tr.slice(0,display_log_limit_cnt)}
                                 </tbody>
                             </Table>
                             <Button size="sm" className="btn-info">Details</Button>
@@ -94,99 +88,17 @@ class Home extends React.Component {
             )
         }
 
+        const light_panel = panel_generator('light',3);
+        const camera_panel = panel_generator('camera',5);
+        const coffee_maker_panel = panel_generator('coffee_maker',4)
+
         return (
             <React.Fragment>
                 <Container>
                     <Row className="row-content">
-                        {light_panel()}
-                        {/* <Col md="6" className="col-content">
-                            <Card body>
-                                <CardTitle><span className="fa fa-lightbulb-o fa-2x device-type-icon"></span> My light bulb</CardTitle>
-                                <CardText></CardText>
-                                <Table light>
-                                    <thead>
-                                        <tr>
-                                            <th>Time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        </tr>
-                                        <tr>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>off</td>
-                                            <td>1513</td>
-                                            <td>3</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                                <Button size="sm" className="btn-info">Details</Button>
-                            </Card>
-                        </Col> */}
-                        <Col md="6" className="col-content">
-                            <Card body>
-                                <CardTitle><span className="fa fa-video-camera fa-2x device-type-icon"></span> Unknown Security Camera</CardTitle>
-                                <CardText>[No description]</CardText>
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            <th>time</th>
-                                            <th>record button</th>
-                                            <th>video quanlity</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>on</th>
-                                            <td>830</td>
-                                            <td>1</td>
-                                        </tr>
-                                        <tr>
-                                            <th>on</th>
-                                            <td>1130</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <th>off</th>
-                                            <td>1310</td>
-                                            <td>2</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                                <Button size="sm" className="btn-info">Details</Button>
-                            </Card>
-                        </Col>
-                        <Col md="6" className="col-content">
-                            <Card body>
-                                <CardTitle><span className="fa fa-coffee fa-2x device-type-icon"></span> Unknown Coffee Maker</CardTitle>
-                                <CardText>[No description]</CardText>
-                                <Table>
-                                    <thead>
-                                        <tr>
-                                            <th>time</th>
-                                            <th>type</th>
-                                            <th>cream</th>
-                                            <th>temperature</th>
-                                            <th>sugar</th>
-                                            <th>milk</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th></th>
-                                            <td>latte</td>
-                                            <td>N</td>
-                                            <td>ice</td>
-                                            <td>1</td>
-                                            <td>2%</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                                <Button size="sm" className="btn-info">Details</Button>
-                            </Card>
-                        </Col>
+                        {light_panel}
+                        {camera_panel}
+                        {coffee_maker_panel}
                     </Row>
                 </Container>
                 {/* <Nav tabs>

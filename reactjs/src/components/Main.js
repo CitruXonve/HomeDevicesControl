@@ -24,7 +24,7 @@ class Main extends Component {
 
     loadConfig(this.remote_config_default)
       .then(res => this.setState({'config': res}))
-      .then(() => console.log('Mainstate: ' + JSON.stringify(this.state)));
+      .then(() => console.log('Mainstate: ' + JSON.stringify(this.state).slice(0,30)));
   }
 
   render() {
@@ -44,7 +44,7 @@ class Main extends Component {
             <Route exact path='/contactus' component={Contact} />} /> */}
           <Redirect to="/home" />
         </Switch>
-        <Footer />
+        {this.state.config ? <Footer config={this.state.config}/> : null}
       </div>
     );
   }
