@@ -8,20 +8,29 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Container Component
 class Main extends Component {
+  local_config_default = '../../data/config.json';
+  remote_config_default = 'https://smart-dev-2c89f.firebaseio.com/smart_devices.json'
 
   constructor(props) {
     super(props);
-    this.state = null;
-  }
+    this.state = {
+      config: null
+    };
 
-  // onDishSelect(dishId) {
-  //   this.setState({ selectedDish: dishId});
-  // }
+    const loadConfig = (url) =>
+      fetch(url)
+        .then(res => res.json())
+        .then(body => body);
+
+    loadConfig(this.remote_config_default)
+      .then(res => this.setState({'config': res}))
+      .then(() => console.log('Mainstate: ' + JSON.stringify(this.state)));
+  }
 
   render() {
     const HomePage = () => {
-      return(
-          <Home />
+      return (
+        <Home config={this.state.config}/>
       );
     }
 
@@ -29,11 +38,11 @@ class Main extends Component {
       <div>
         <Header />
         <Switch>
-            <Route path='/home' component={HomePage} />
-            {/* <Route path='/menu/:dishId' component={DishWithId} />
+          <Route path='/home' component={HomePage} />
+          {/* <Route path='/menu/:dishId' component={DishWithId} />
             <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
             <Route exact path='/contactus' component={Contact} />} /> */}
-            <Redirect to="/home" />
+          <Redirect to="/home" />
         </Switch>
         <Footer />
       </div>
