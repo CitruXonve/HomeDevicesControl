@@ -32,21 +32,21 @@ class Header extends Component {
                       <NavLink className="nav-link" to="#">
                           <span className="fa fa-bar-chart menu-icon"></span>
                           <span>Activities</span>
-                          <span className="badge badge-pill badge-danger notify-badge">5</span>
+                          {/* <span className="badge badge-pill badge-danger notify-badge">5</span> */}
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to="#">
                         <span className="fa fa-cubes menu-icon"></span>
                         <span>Devices</span>
-                        <span className="badge badge-pill badge-warning notify-badge">6</span>
+                        {/* <span className="badge badge-pill badge-warning notify-badge">6</span> */}
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to="#">
                         <i className="fa fa-cogs menu-icon" aria-hidden="true"></i>
                         <span>Settings</span>
-                        <span className="badge badge-pill badge-primary notify-badge">8</span>
+                        {/* <span className="badge badge-pill badge-primary notify-badge">8</span> */}
                       </NavLink>
                     </NavItem>
                     {/* <NavItem>
