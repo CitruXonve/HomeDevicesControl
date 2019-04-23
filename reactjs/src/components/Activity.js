@@ -3,11 +3,11 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle
 } from 'reactstrap';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Button, Row, Col, Container, Table } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Button, Row, Col, Container, Table, Jumbotron } from 'reactstrap';
 // import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
-class Home extends React.Component {
+class ActivityView extends React.Component {
     constructor(props) {
         super(props);
 
@@ -94,6 +94,16 @@ class Home extends React.Component {
 
         return (
             <React.Fragment>
+                <Jumbotron className="d-none d-sm-none d-md-block">
+                    <div className="container">
+                        <div className="row row-header">
+                            <div className="col-12">
+                                <h1>Get inspired && Start up!</h1>
+                                <p>A glance at all your Smart Devices</p>
+                            </div>
+                        </div>
+                    </div>
+                </Jumbotron>
                 <Container>
                     <Row className="row-content">
                         {light_panel}
@@ -201,4 +211,4 @@ class Home extends React.Component {
     };
 }
 
-export default Home;   
+export default ActivityView;   

@@ -3,7 +3,9 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 // import Menu from './Menu';
 import Header from './Header';
 import Footer from './Footer';
-import Home from './Home';
+import ActivityView from './Activity';
+import DeviceView from './Device';
+import SettingView from './Setting';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Container Component
@@ -30,7 +32,7 @@ class Main extends Component {
   render() {
     const HomePage = () => {
       return (
-        <Home config={this.state.config}/>
+        <ActivityView config={this.state.config}/>
       );
     }
 
@@ -42,6 +44,8 @@ class Main extends Component {
           {/* <Route path='/menu/:dishId' component={DishWithId} />
             <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
             <Route exact path='/contactus' component={Contact} />} /> */}
+          <Route path='/devices' component={()=>(<DeviceView />)} />
+          <Route path='/settings' component={()=>(<SettingView />)} />
           <Redirect to="/home" />
         </Switch>
         {this.state.config ? <Footer config={this.state.config}/> : null}

@@ -42,7 +42,7 @@
 	align-items: stretch;
 	margin: 0px 0px; */
 
-	background: -webkit-linear-gradient(-72deg, #ffc107 18%, #5cb76b 63%, #06bb9f 71%);
+	background: -webkit-linear-gradient(-72deg, #ffc10780 18%, #5cb76b80 63%, #06bb9f80 71%);
 	-webkit-background-clip: text;
 	/* -webkit-text-fill-color: linear-gradient(-86deg, #EEF85B 5%, #7AEC8D 53%, #09E5C3 91%); */
 }
@@ -74,6 +74,17 @@
     color:white;
     padding:5px 10px;
     font-size:20px; */
+}
+
+.mobile-nav .navbar-nav li .nav-link.active {
+	opacity: 1.0;
+    background: rgba(255,96,96,0.9);
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+}
+
+.mobile-nav .navbar-nav li .nav-link {
+    /* opacity: 0.7; */
 }
 
 /* html, body {
