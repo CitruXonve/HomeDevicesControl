@@ -38,24 +38,10 @@ class DeviceView extends Component {
         super(props);
 
         this.state = {
-            //     "device": {
-            //         "light": {
-            //             "status": {
-            //                 "checked": false,
-            //                 "name": "AAA",
-            //                 "time": 123,
-            //             }
-            //         }
-            //     },
-            //     "checkedB": false
         };
 
         if (props.config) {
             this.state.config = props.config;
-            // alert(0)
-            // const promise = new Promise(()=>this.setState({['config']: props.config}),()=>alert("error1"))
-            // alert(props.config)
-            // promise.then(()=>console.log('DeviceStateSet: ' + JSON.stringify(this.state).slice(0,50)),()=>alert("error2"))
         }
         // else
         //     console.log('DeviceStateUnset: ' ,JSON.stringify(this.state),":",JSON.stringify(props.config));
@@ -92,9 +78,6 @@ class DeviceView extends Component {
                         label={attr}
                         value={device.status[attr]}
                         onChange={(event)=>{device.status[attr]=event.target.value; this.forceUpdate();}}
-                        // value={this.state.config.device[0].status["time"]}
-                        //   defaultValue="foo"
-                        //   className={classes.textField}
                         margin="normal"
                         variant="outlined"
                     /> : null
@@ -102,27 +85,9 @@ class DeviceView extends Component {
 
             return (
                 <form
-                    onChange={
-                        event => {
-                            console.log('form change', JSON.stringify(device.status))
-                            // console.log("form change: ", event.target.id, event.target, event.target.value)
-                            // this.state.config.device[0].status[event.target.id] = event.target.value
-                            // this.forceUpdate()
-                        }
-                    }
                     noValidate autoComplete="off">
 
                     {attr_input_list}
-                    {/*<TextField
-                    id="time"
-                    label="Time"
-                    caption="time"
-                    value={this.state.config.device[0].status["time"]}
-                    //   defaultValue="foo"
-                    //   className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                /> */}
 
                     <Button variant="outlined" color="primary"
                         onClick={() => {
@@ -158,33 +123,17 @@ class DeviceView extends Component {
                                             <Switch
                                                 id={spec_device.title + "_switch"}
                                                 checked={spec_device.status.is_on}
-                                                // onChange={this.handleChange('light')}
                                                 onChange={event => {
                                                     spec_device.status.is_on = event.target.checked; this.forceUpdate();
                                                     this.update_config()
                                                     console.log('SwitchState: ', event.target.id, event.target.checked)
                                                 }}
-                                                // value={spec_device.type+"-switch"}
                                                 color="primary"
                                             />
                                         }
                                         label="On/Off"
                                     />
                                 </FormGroup> : <div></div>
-                            /* <FormGroup row>
-                            <FormControlLabel
-                            control={
-                                <Switch
-                                checked={this.state.config.device[0].status.is_on}
-                                // onChange={this.handleChange('light')}
-                                onChange={event => { this.state.config.device[0].status.is_on = event.target.checked; this.forceUpdate(); }}
-                                value="light-switch"
-                                color="primary"
-                                />
-                            }
-                            label="On/Off"
-                            />
-                            </FormGroup> */
                         }
                         {TextfieldContent(spec_device)}
                     </CardContent>
@@ -198,42 +147,19 @@ class DeviceView extends Component {
 
         return (
             <Container>
-                <Row>
-                    <Col>
+                <Row className="row-content">
+                    <Col className="col-content">
                         <h2>Device List</h2>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Card>
-                            <CardHeader
-                                avatar={<span className={"fa fa-lightbulb-o fa-2x device-type-icon"}></span>}
-                                title="My light bulb"
-                                subheader="[No description]"
-                            />
-                            <CardContent>
-                                <FormGroup row>
-                                    <FormControlLabel
-                                        control={
-                                            <Switch
-                                                checked={this.state.config.device[0].status.is_on}
-                                                // onChange={this.handleChange('light')}
-                                                onChange={event => { this.state.config.device[0].status.is_on = event.target.checked; this.forceUpdate(); }}
-                                                value="light-switch"
-                                                color="primary"
-                                            />
-                                        }
-                                        label="On/Off"
-                                    />
-                                </FormGroup>
-                                {TextfieldContent}
-
-                            </CardContent>
-                        </Card>
-                        {/* <OutlinedTextFields content={TextfieldContent}/> */}
-                        {/* <SimpleCard /> */}
+                <Row className="row-content">
+                    <Col className="col-content col-12 col-md-6">
                         {light_card}
+                    </Col>
+                    <Col className="col-content col-12 col-md-6">
                         {camera_card}
+                    </Col>
+                    <Col className="col-content col-12 col-md-6">
                         {coffee_maker_card}
                     </Col>
                 </Row>

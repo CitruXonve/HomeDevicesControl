@@ -22,7 +22,7 @@ class Header extends Component {
   render() {
     return(
     <React.Fragment>
-      <Navbar dark className="web-header d-none" expand="md" fixed="top">{/*  d-none d-md-block */}
+      <Navbar dark className="web-header d-none d-md-block" expand="md" fixed="top">{/*  d-none d-md-block */}
           <div className="container">
               <NavbarToggler onClick={this.toggleNav} />
               <NavbarBrand className="mr-auto" href="#">Smart Devices</NavbarBrand>
@@ -59,7 +59,7 @@ class Header extends Component {
               </Collapse>
           </div>
       </Navbar>
-      <Navbar light className="mobile-header d-block" expand="xs" fixed="top">
+      <Navbar light className="mobile-header d-block d-md-none" expand="xs" fixed="top">
           <div className="container">
               <Collapse navbar>
                 <Nav navbar>
@@ -81,7 +81,6 @@ class Header extends Component {
             </div>
 
       </Navbar>
-     */}
     </React.Fragment>
     );
   }
