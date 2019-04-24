@@ -6,6 +6,7 @@
     "bootstrap": "^4.0.0",
     "bootstrap-social": "^5.1.1",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.4.0",
     "react": "^16.8.6",
     "react-cross-form": "^1.2.12",
     "react-dom": "^16.8.6",
