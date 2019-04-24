@@ -18,24 +18,20 @@ class Main extends Component {
     this.state = {
       config: null
     };
-
-    const loadConfig = (url) =>
-      fetch(url)
-        .then(res => res.json())
-        .then(body => body);
-
-    loadConfig(this.remote_config_default)
-      .then(res => this.setState({'config': res}))
-      .then(() => console.log('Mainstate: ' + JSON.stringify(this.state).slice(0,30)));
   }
 
-  render() {
+  loadConfig = (url) =>
+    fetch(url)
+      .then(res => res.json())
+      .then(body => body);
+
+  render_handler = () => {
     const HomePage = () => {
       return (
         <ActivityView config={this.state.config}/>
       );
     }
-
+  
     return (
       <div>
         <Header />
@@ -44,13 +40,27 @@ class Main extends Component {
           {/* <Route path='/menu/:dishId' component={DishWithId} />
             <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
             <Route exact path='/contactus' component={Contact} />} /> */}
-          <Route path='/devices' component={()=>(<DeviceView />)} />
-          <Route path='/settings' component={()=>(<SettingView />)} />
+          <Route path='/devices' component={()=>(<DeviceView config={this.state.config}/>)} />
+          <Route path='/settings' component={()=>(<SettingView config={this.state.config}/>)} />
           <Redirect to="/home" />
         </Switch>
         {this.state.config ? <Footer config={this.state.config}/> : null}
       </div>
     );
+  }
+
+  render() {
+    var render_res=null;
+    if (!this.state.config){ // need to update the config
+      this.loadConfig(this.remote_config_default)
+      .then(res => this.setState({'config': res}))
+      .then(() => console.log('Mainstate: ' + JSON.stringify(this.state).slice(0,60)))
+      .then(() => {render_res = this.render_handler()})
+    }
+    else{
+      render_res = this.render_handler()
+    }
+    return render_res;
   }
 }
 
